@@ -1,0 +1,42 @@
+<form class="bg-light text-center col-md-8" action="/edit/{{toy._id}}" method="post">
+    <div>
+        <h1 class="text text-primary">Edit</h1>
+    </div>
+    <div class="form-group mt-3">
+        <label class="text text-success">Name</label>
+        <input class="form-control" type="text" name="name" value="{{toy.name}}" required>
+    </div>
+    <div>
+        <label class="text text-success">Price</label>
+        <input class="form-control" type="number" name="price" value="{{toy.price}}" required>
+    </div>
+    </div>
+    <div>
+        <label class="text text-success">Category</label>
+        <select class="form-control" name="category" required>
+            <option value="1">Toy</option>
+            <option value="2">Toy1</option>
+        </select>
+
+    </div>
+
+    <div class="form-group mt-3">
+        <label class="text text-success">Brand</label>
+        <input class="form-control" type="text" name="brand" value="{{toy.brand}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <label class="text text-success">Quantity</label>
+        <input class="form-control" type="number" name="quantity" value="{{toy.quantity}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <label class="text text-success">Image</label>
+        <input class="form-control" type="text" name="image" value="{{toy.image}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <label class="text text-success">Detail</label>
+        <input class="form-control" type="text" name="detail" value="{{toy.detail}}" required>
+    </div>
+    <div class="form-group mt-3">
+        <input class="btn btn-danger" type="submit" value="Edit">
+    </div>
+</form>
