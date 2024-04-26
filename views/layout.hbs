@@ -5,10 +5,72 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+	<link href="/Demo1/views/hompage.css" rel="stylesheet">
+	<nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Toy Story</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+				aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarColor03">
+				<ul class="navbar-nav me-auto">
+					{{!-- <li class="nav-item">
+						<a class="nav-link" href="/admin">Admin</a>
+					</li> --}}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+							aria-haspopup="true" aria-expanded="false">Product</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="/toy">Toy</a>
+							<a class="dropdown-item" href="/figure">Figure</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
   </head>
-  </head>
+  
   <body>
     
     {{{body}}}
+    <footer class="footer bg-dark text-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-sm-6">
+				<div class="single-box">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPP6--F4dmwlU3tTV4Qv1jP-6i6OZg4m1CRDIlqFkhJyeuNS2JLJP6ICAEtFGTosxzvfI&usqp=CAU"
+						style="height:150px; padding-left: 20px;padding-top: 30px; padding-bottom: 30px;" alt="">
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6">
+				<div class="single-box" style="padding-left: 50px">
+					<h2>Hosting</h2>
+					<ul>
+						<li><a href="/">Home Page</a></li>
+						<li><a href="/admin">Admin</a></li>
+						<li><a href="/about">About</a></li>
+						<li><a href="/contact">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-6 col-sm-12">
+				<div class="single-box" style="padding-right: 50px; text-align: justify;">
+					<h2>Information</h2>
+					<p>The ToyStory is your ultimate destination for smart toy products and toy models for babies. We
+						are committed
+						to delivering the highest quality products that provide both entertainment and educational
+						value. With a
+						focus on innovation and safety, we curate a collection of the most prestigious toy brands on the
+						market.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
   </body>
 </html>

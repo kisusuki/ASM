@@ -76,3 +76,29 @@
 		font-weight: normal;
 	}
 }
+
+
+/* var select = req.body.category;
+if (select == 1) {
+  await ToyModel.create(toy);
+} else if (select == 2) {
+  await FigureModel.create(toy);
+  await ToyModel.create(toy);
+} */
+
+
+
+/* router.get('/figure', async (req, res) => {
+	var toys = await FigureModel.find({});
+	res.render('list', { toys: toys });
+  }) */
+
+/* 
+  <div>
+        <label class="text text-success">Category</label>
+        <select class="form-control" name="category" required>
+            <option value="1">Toy</option>
+            <option value="2">Figure</option>
+        </select>
+
+    </div> */

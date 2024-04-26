@@ -1,6 +1,6 @@
 var express = require('express');
 const ToyModel = require('../models/ToyModel');
-// const Toy1Model = require('../models/Toy1Model');
+const FigureModel = require('../models/FigureModel');
 var router = express.Router();
 
 router.get('/admin', async (req, res) => {
@@ -14,10 +14,10 @@ router.get('/list', async (req, res) => {
 })
 
 router.post('/search', async (req, res) => {
-    var keyword = req.body.keyword;
-    var toys = await ToyModel.find({ name: new RegExp(keyword, "i") })
-    res.render('admin', { toys: toys })
- })
+  var keyword = req.body.keyword;
+  var toys = await ToyModel.find({ name: new RegExp(keyword, "i") })
+  res.render('admin', { toys: toys })
+})
 
 router.get('/delete/:id', async (req, res) => {
   await ToyModel.findByIdAndDelete(req.params.id)
@@ -35,6 +35,7 @@ router.get('/drop', async (req, res) => {
 router.post('/order', async (req, res) => {
   var id = req.body.id;
   var toy = await ToyModel.findById(id);
+
   var order_quantity = req.body.order_quantity;
   var price = req.body.price;
   var total_price = price * order_quantity;
@@ -45,13 +46,11 @@ router.get('/', async (req, res) => {
   res.render('homepage', { toys: toys });
 })
 router.get('/add', (req, res) => {
-
   res.render('add');
 })
 
 router.post('/add', async (req, res) => {
   var toy = req.body;
-  
   await ToyModel.create(toy)
   res.redirect('/admin');
 })
@@ -65,21 +64,19 @@ router.post('/edit/:id', async (req, res) => {
   var id = req.params.id;
   var updatedData = req.body;
   await ToyModel.findByIdAndUpdate(id, updatedData)
-    .then(() => { console.log('Edit toy succeed !') });
+  await FigureModel.findByIdAndUpdate(id, updatedData)
   res.redirect('/admin');
 })
+
 router.get('/toy', async (req, res) => {
   var toys = await ToyModel.find({});
   res.render('list', { toys: toys });
 })
-// router.get('/toy1', async (req, res) => {
-//   var toys = await Toy1Model.find({});
-//   res.render('list', { toys : toys });
-// })
+
 // var select = req.body.category;
-  // if(select == 1)
-  // { await ToyModel.create(toy)}
-  // else if(select == 2) 
-  // { await Toy1Model.create(toy)}
-  // else{}
+// if(select == 1)
+// { await ToyModel.create(toy)}
+// else if(select == 2) 
+// { await Toy1Model.create(toy)}
+// else{}
 module.exports = router;
