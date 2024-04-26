@@ -1,6 +1,6 @@
 var express = require('express');
 const ToyModel = require('../models/ToyModel');
-const FigureModel = require('../models/FigureModel');
+
 var router = express.Router();
 
 router.get('/admin', async (req, res) => {
@@ -64,7 +64,7 @@ router.post('/edit/:id', async (req, res) => {
   var id = req.params.id;
   var updatedData = req.body;
   await ToyModel.findByIdAndUpdate(id, updatedData)
-  await FigureModel.findByIdAndUpdate(id, updatedData)
+ 
   res.redirect('/admin');
 })
 
