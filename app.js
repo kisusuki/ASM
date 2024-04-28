@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 
 var adminRouter = require('./routes/admin');
 
+var brandRouter = require('./routes/brand');
 
 var app = express();
 
@@ -40,7 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/brand', brandRouter);
 app.use('/', adminRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);

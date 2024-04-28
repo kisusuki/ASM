@@ -94,11 +94,4 @@ if (select == 1) {
   }) */
 
 /* 
-  <div>
-        <label class="text text-success">Category</label>
-        <select class="form-control" name="category" required>
-            <option value="1">Toy</option>
-            <option value="2">Figure</option>
-        </select>
-
-    </div> */
+ 

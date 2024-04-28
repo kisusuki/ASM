@@ -1,10 +1,13 @@
 var express = require('express');
-const ToyModel = require('../models/ToyModel');
 
+const ToyModel = require('../models/ToyModel');
+const BrandModel = require('../models/BrandModel');
+// const BrandModel = require('../models/BrandModel');
 var router = express.Router();
 
 router.get('/admin', async (req, res) => {
-  var toys = await ToyModel.find({});
+  var toys = await ToyModel.find({}).populate('brand');
+
   res.render('admin', { toys: toys })
 })
 
@@ -45,19 +48,23 @@ router.get('/', async (req, res) => {
   var toys = await ToyModel.find({});
   res.render('homepage', { toys: toys });
 })
-router.get('/add', (req, res) => {
-  res.render('add');
+router.get('/add', async (req, res) => {
+  var brands = await BrandModel.find({});
+  var toys = await ToyModel.find().populate('brand');
+  res.render('add', {toys, brands});
 })
 
 router.post('/add', async (req, res) => {
-  var toy = req.body;
-  await ToyModel.create(toy)
+  var toys = req.body;
+  await ToyModel.create(toys)
+  
   res.redirect('/admin');
 })
 
 router.get('/edit/:id', async (req, res) => {
-  var toy = await ToyModel.findById(req.params.id);
-  res.render('edit', { toy: toy });
+  var toy = await ToyModel.findById(req.params.id).populate('brand');
+  var brands = await BrandModel.find({});
+  res.render('edit', { toy: toy,brands });
 })
 
 router.post('/edit/:id', async (req, res) => {
@@ -73,10 +80,6 @@ router.get('/toy', async (req, res) => {
   res.render('list', { toys: toys });
 })
 
-// var select = req.body.category;
-// if(select == 1)
-// { await ToyModel.create(toy)}
-// else if(select == 2) 
-// { await Toy1Model.create(toy)}
-// else{}
+
+
 module.exports = router;
