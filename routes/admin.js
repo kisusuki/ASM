@@ -2,7 +2,7 @@ var express = require('express');
 
 const ToyModel = require('../models/ToyModel');
 const BrandModel = require('../models/BrandModel');
-// const BrandModel = require('../models/BrandModel');
+const FigureModel = require('../models/FigureModel');
 var router = express.Router();
 
 router.get('/admin', async (req, res) => {
@@ -51,27 +51,35 @@ router.get('/', async (req, res) => {
 router.get('/add', async (req, res) => {
   var brands = await BrandModel.find({});
   var toys = await ToyModel.find().populate('brand');
-  res.render('add', {toys, brands});
+
+  res.render('add', { toys, brands });
 })
 
 router.post('/add', async (req, res) => {
   var toys = req.body;
-  await ToyModel.create(toys)
   
+  var select = req.body.category;
+  if (select == 1) {
+    await ToyModel.create(toys);
+  } else if (select == 2) {
+    await FigureModel.create(toys);
+    
+  }
+  await ToyModel.create(toys);
   res.redirect('/admin');
 })
 
 router.get('/edit/:id', async (req, res) => {
   var toy = await ToyModel.findById(req.params.id).populate('brand');
   var brands = await BrandModel.find({});
-  res.render('edit', { toy: toy,brands });
+  res.render('edit', { toy: toy, brands });
 })
 
 router.post('/edit/:id', async (req, res) => {
   var id = req.params.id;
   var updatedData = req.body;
   await ToyModel.findByIdAndUpdate(id, updatedData)
- 
+
   res.redirect('/admin');
 })
 
@@ -79,7 +87,10 @@ router.get('/toy', async (req, res) => {
   var toys = await ToyModel.find({});
   res.render('list', { toys: toys });
 })
-
+router.get('/figure', async (req, res) => {
+  var toys = await FigureModel.find({});
+  res.render('list', { toys: toys });
+})
 
 
 module.exports = router;
